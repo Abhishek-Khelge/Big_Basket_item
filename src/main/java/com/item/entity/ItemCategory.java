@@ -1,0 +1,32 @@
+package com.item.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Data
+@ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "itemList","subCategory"})
+public class ItemCategory {
+
+    @Id
+    private Integer itemCategoryId;
+    private Integer ItemTagName;
+
+    @OneToMany(mappedBy = "itemCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Item> itemList = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private SubCategory subCategory;
+
+
+
+}
