@@ -14,50 +14,66 @@ public class CategoryController {
     CategoryServices categoryServices;
 
     /**
-     * Description :
-     *
-     * @param adminId this i
-     * @param category what is this
-     * @return what is returning
+     * Description :  add category to DB
+     * @param adminId this is for checking authorization
+     * @param category input category
+     * @return status
      */
     @PostMapping("/category/{adminId}")
     public CategoryDto addCategory(@PathVariable("adminId") Integer adminId, @RequestBody Category category){
-        return categoryServices.addCategory(category);
+        return categoryServices.addCategory(adminId,category);
     }
 
     /**
-     *
-     * @param adminId
-     * @param category
-     * @return
+     * Description : update the category
+     * @param adminId this is for checking authorization
+     * @param category update category body
+     * @return status
      */
     @PutMapping("/category/{adminId}")
-    public String updateCategory(@PathVariable("adminId") Integer adminId,@RequestBody Category category){
-        return categoryServices.updateCategory(category);
+    public CategoryDto updateCategory(@PathVariable("adminId") Integer adminId,@RequestBody Category category){
+        return categoryServices.updateCategory(adminId,category);
     }
 
-    // delete a particular category
+    /**
+     * Description : to delete the category
+     * @param adminId this is for checking authorization
+     * @param categoryId to point which category to delete
+     * @return status
+     */
     @DeleteMapping("/category/{adminId}/{categoryId}")
-    public String removeCategory(@PathVariable("adminId") Integer adminId,
-                            @PathVariable("categoryId") Integer categoryId){
-        return categoryServices.removeCategory(categoryId);
+    public CategoryDto removeCategory(@PathVariable("adminId") Integer adminId,
+                                      @PathVariable("categoryId") Integer categoryId){
+        return categoryServices.removeCategory(adminId,categoryId);
     }
 
-    // get All category
+    /**
+     * Description : return all the  category
+     * @return returning list of all the category information
+     */
     @GetMapping("/category")
     public List<Category> getAllCategory(){
         return categoryServices.getAllCategory();
     }
 
-    // get All Items By category
+    /**
+     * Description : To fetch all the items which belong to same category
+     * @param categoryId : to get all Items of same category using categoryId.
+     * @return returning the list of items.
+     */
     @GetMapping("/category/items/{categoryId}")
     public List<Item> getItemsByCategory(@PathVariable("categoryId") Integer categoryId){
         return categoryServices.getItemsByCategory(categoryId);
     }
 
-    // get a particular category information for admin
+    /**
+     * Description : to get Information one category by using CategoryId
+     * @param adminId this is for checking authorization
+     * @param categoryId this is for getting Information of category by using categoryId
+     * @return returning the information of one category
+     */
     @GetMapping("/category/{adminId}/{categoryId}")
-    public Category getCategory(@PathVariable("adminId") Integer adminId,
+    public CategoryDto getCategory(@PathVariable("adminId") Integer adminId,
                                           @PathVariable("categoryId") Integer categoryId){
         return categoryServices.getCategory(adminId,categoryId);
     }
