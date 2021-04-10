@@ -18,8 +18,9 @@ import java.util.List;
 public class ItemCategory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer itemCategoryId;
-    private Integer ItemTagName;
+    private String itemTagName;
 
     @OneToMany(mappedBy = "itemCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Item> itemList = new ArrayList<>();

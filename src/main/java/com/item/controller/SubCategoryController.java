@@ -1,5 +1,6 @@
 package com.item.controller;
 
+import com.item.dto.SubCategoryDto;
 import com.item.entity.Category;
 import com.item.entity.Item;
 import com.item.entity.SubCategory;
@@ -16,21 +17,21 @@ public class SubCategoryController {
     SubCategoryServices subCategoryServices;
 
     @PostMapping("/subcategory/{adminId}")
-    public String addSubCategory(@PathVariable("adminId") Integer adminId,
-                                 @RequestBody SubCategory subCategory){
+    public SubCategoryDto addSubCategory(@PathVariable("adminId") Integer adminId,
+                                         @RequestBody SubCategory subCategory){
         return subCategoryServices.addSubCategory(adminId,subCategory);
     }
 
     //update sub-category
     @PutMapping("/subcategory/{adminId}/")
-    public String updateSubCategory(@PathVariable("adminId") Integer adminId,
+    public SubCategoryDto updateSubCategory(@PathVariable("adminId") Integer adminId,
                              @RequestBody SubCategory subCategory){
         return subCategoryServices.updateSubCategory(adminId,subCategory);
     }
 
     // delete a sub-category
     @DeleteMapping("/subcategory/{adminId}/{subCategoryId}")
-    public String removeSubCategory(@PathVariable("adminId") Integer adminId,
+    public SubCategoryDto removeSubCategory(@PathVariable("adminId") Integer adminId,
                                     @PathVariable("subCategoryId") Integer subCategoryId) {
         return subCategoryServices.removeSubCategory(adminId,subCategoryId);
     }

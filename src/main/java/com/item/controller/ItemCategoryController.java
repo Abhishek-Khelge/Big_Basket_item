@@ -1,5 +1,7 @@
 package com.item.controller;
 
+import com.item.dto.CategoryDto;
+import com.item.dto.ItemCategoryDto;
 import com.item.entity.Category;
 import com.item.entity.Item;
 import com.item.entity.ItemCategory;
@@ -14,23 +16,39 @@ public class ItemCategoryController {
     @Autowired
     ItemCategoryServices itemCategoryServices;
 
-    /*Admin adding item category in db using subcategoryId*/
+    /**
+     * Description : Admin adding item category in db using itemcategoryId
+     * @param adminId : this is for checking authorization
+     * @param itemCategory : input itemCategory
+     * @return : status
+     */
     @PostMapping("/itemcategory/{adminId}")
-    public String addItemCategory(@PathVariable("adminId") Integer adminId,
-                                  @RequestBody ItemCategory itemCategory){
+    public ItemCategoryDto addItemCategory(@PathVariable("adminId") Integer adminId,
+                                           @RequestBody ItemCategory itemCategory){
 
         return itemCategoryServices.addItemCategory(adminId,itemCategory);
     }
 
-    /**Updating item category**/
+    /**
+     * Description : Updating item category
+     * @param adminId : this is for checking authorization
+     * @param itemCategory : input itemCategory
+     * @return
+     */
     @PutMapping("/itemcategory/{adminId}")
-    public String updateItemCategory(@PathVariable("adminId") Integer adminId,
+    public ItemCategoryDto updateItemCategory(@PathVariable("adminId") Integer adminId,
                                      @RequestBody ItemCategory itemCategory){
         return itemCategoryServices.updateItemCategory(adminId,itemCategory);
     }
 
+    /**
+     *  Description : to delete the Itemcategory
+     * @param adminId : this is for checking authorization
+     * @param itemCategoryId : to point which category to delete
+     * @return : status
+     */
     @DeleteMapping("/itemcategory/{adminId}/{itemCategoryId}")
-    public String removeItemCategory(@PathVariable("adminId") Integer adminId,
+    public ItemCategoryDto removeItemCategory(@PathVariable("adminId") Integer adminId,
                                      @PathVariable("itemCategoryId") Integer itemCategoryId){
         return itemCategoryServices.removeItemCategory(adminId,itemCategoryId);
     }
