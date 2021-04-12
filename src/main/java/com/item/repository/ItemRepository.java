@@ -23,8 +23,8 @@ import java.util.List;
  *     void addStudents(@Param("id") Long id, @Param("name") String name);
  *
  */
-@Repository
-public interface ItemRepository extends JpaRepository<Item,Integer> {
+    @Repository
+    public interface ItemRepository extends JpaRepository<Item,Integer> {
 
 //    @Query(value = "select * from Student where name=:name", nativeQuery = true)
 

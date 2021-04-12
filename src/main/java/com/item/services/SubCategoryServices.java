@@ -61,7 +61,11 @@ public class SubCategoryServices {
         return subCategoryDto;
     }
 
-    public List<Item> getItemsBySubCategory(Integer subCategory) {
+    public List<Item> getItemsBySubCategory(Integer subCategoryId) {
+        Optional<SubCategory> subCategory = subCategoryRepo.findById(subCategoryId);
+        if(subCategory.isPresent()){
+            return itemServices.getItemBySubCategory(subCategoryId);
+        }
         return new ArrayList<>();
     }
 

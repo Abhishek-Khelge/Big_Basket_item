@@ -64,19 +64,16 @@ public class ItemServices {
             return item.get();
         return null;
     }
-//
-//    public List<Item> getItemsByCategory(Integer categoryId){
-//        List<Item> itemList = itemRepository.getItemsByCategoryId(categoryId);
-//        return itemList;
-//    }
-//
-//    public List<Item> getItemByItemCategory(Integer itemCategoryId ){
-//        List<Item> itemList = itemRepository.getItemsByItemCategoryId(itemCategoryId);
-//        return itemList;
-//    }
-//    public List<Item> getItemBySubCategory(Integer subCategoryId ){
-//        List<Item> itemList = itemRepository.getItemsBySubCategoryId(subCategoryId);
-//        return itemList;
-//    }
+
+    public List<Item> getItemsByCategory(Integer categoryId){
+        return itemRepository.getItemsByCategoryId(categoryId);
+    }
+
+    public List<Item> getItemByItemCategory(Integer itemCategoryId ){
+        return itemRepository.getItemsByItemCategoryId(itemCategoryId);
+    }
+    public List<Item> getItemBySubCategory(Integer subCategoryId ){
+        return itemRepository.getItemsBySubCategoryId(subCategoryId);
+    }
 
 }

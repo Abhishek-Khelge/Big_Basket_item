@@ -33,9 +33,11 @@ public class Item {
     private ItemCategory itemCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="subCategoryId")
     private SubCategory subCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CategoryId")
     private Category category;
 
     public Integer getCategoryId(){

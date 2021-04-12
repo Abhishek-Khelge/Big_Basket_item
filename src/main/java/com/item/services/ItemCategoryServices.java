@@ -17,6 +17,8 @@ import java.util.Optional;
 public class ItemCategoryServices {
     @Autowired
     ItemCategoryRepository itemCategoryRepository;
+    @Autowired
+    ItemServices itemServices;
 
 
     public ItemCategoryDto addItemCategory(Integer adminId, ItemCategory itemCategory) {
@@ -59,6 +61,10 @@ public class ItemCategoryServices {
     }
 
     public List<Item> getItemsByItemCategory(Integer itemCategoryId) {
+        Optional<ItemCategory> itemCategory=itemCategoryRepository.findById(itemCategoryId);
+        if(itemCategory.isPresent()){
+            return itemServices.getItemByItemCategory(itemCategoryId);
+        }
         return new ArrayList<>();
     }
 
