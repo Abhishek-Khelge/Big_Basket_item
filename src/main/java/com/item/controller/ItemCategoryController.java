@@ -54,7 +54,7 @@ public class ItemCategoryController {
     }
 
     /**get all items by item category*/
-    @GetMapping("/itemcategory/{itemCategoryId}")
+    @GetMapping("/itemcategory/items/{itemCategoryId}")
     public List<Item> getItemsByItemCategory(@PathVariable("itemCategoryId") Integer itemCategoryId){
         return itemCategoryServices.getItemsByItemCategory(itemCategoryId);
     }

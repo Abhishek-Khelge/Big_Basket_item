@@ -14,7 +14,11 @@ import java.util.Optional;
 @Service
 public class CategoryServices {
      @Autowired
-    CategoryRepository categoryRepository;
+     CategoryRepository categoryRepository;
+
+     @Autowired
+     ItemServices itemServices;
+
     public CategoryDto addCategory(Integer adminId,Category category) {
         //verify admin
         Category category1 = categoryRepository.save(category);
@@ -61,9 +65,7 @@ public class CategoryServices {
     public List<Item> getItemsByCategory(Integer categoryId) {
         Optional<Category> category = categoryRepository.findById(categoryId);
         if(category.isPresent()){
-
-        }else{
-            
+            return itemServices.getItemsByCategory(categoryId);
         }
         return new ArrayList<>();
     }

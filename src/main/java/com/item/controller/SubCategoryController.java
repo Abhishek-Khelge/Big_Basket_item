@@ -37,9 +37,9 @@ public class SubCategoryController {
     }
 
     //get all items by sub-category
-    @GetMapping("/subcategory/{subCategory}")
-    public List<Item> getItemsBySubCategory(@PathVariable("subCategory") Integer subCategory ){
-        return subCategoryServices.getItemsBySubCategory(subCategory);
+    @GetMapping("/subcategory/items/{subCategoryId}")
+    public List<Item> getItemsBySubCategory(@PathVariable("subCategoryId") Integer subCategoryId ){
+        return subCategoryServices.getItemsBySubCategory(subCategoryId);
     }
 
 
