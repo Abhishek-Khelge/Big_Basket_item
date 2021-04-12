@@ -74,7 +74,7 @@ public class CategoryController {
      */
     @GetMapping("/category/{adminId}/{categoryId}")
     public CategoryDto getCategory(@PathVariable("adminId") Integer adminId,
-                                          @PathVariable("categoryId") Integer categoryId){
+                                   @PathVariable("categoryId") Integer categoryId){
         return categoryServices.getCategory(adminId,categoryId);
     }
 

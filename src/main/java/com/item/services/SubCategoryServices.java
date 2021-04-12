@@ -2,6 +2,7 @@ package com.item.services;
 
 import com.item.dto.ItemCategoryDto;
 import com.item.dto.SubCategoryDto;
+import com.item.entity.Category;
 import com.item.entity.Item;
 import com.item.entity.ItemCategory;
 import com.item.entity.SubCategory;
@@ -19,6 +20,8 @@ public class SubCategoryServices {
     @Autowired
     SubCategoryRepository subCategoryRepo;
 
+    @Autowired
+    ItemServices itemServices;
     public SubCategoryDto addSubCategory(Integer adminId, SubCategory subCategory) {
         /**Verify admin*/
         SubCategory subCategory1 =  subCategoryRepo.save(subCategory);
@@ -58,7 +61,11 @@ public class SubCategoryServices {
         return subCategoryDto;
     }
 
-    public List<Item> getItemsBySubCategory(Integer subCategory) {
+    public List<Item> getItemsBySubCategory(Integer subCategoryId) {
+        Optional<SubCategory> subCategory = subCategoryRepo.findById(subCategoryId);
+        if(subCategory.isPresent()){
+            return itemServices.getItemBySubCategory(subCategoryId);
+        }
         return new ArrayList<>();
     }
 

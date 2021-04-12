@@ -23,19 +23,19 @@ import java.util.List;
  *     void addStudents(@Param("id") Long id, @Param("name") String name);
  *
  */
-@Repository
-public interface ItemRepository extends JpaRepository<Item,Integer> {
+    @Repository
+    public interface ItemRepository extends JpaRepository<Item,Integer> {
 
 //    @Query(value = "select * from Student where name=:name", nativeQuery = true)
 
 
-//    @Query(value = "select * from Item where itemCategoryId =:itemCategoryId",nativeQuery = true)
-//    List<Item> getItemsByItemCategoryId(Integer itemCategoryId);
-//
-//    @Query(value=" select * from Item where subCategoryId =: subCategoryId ", nativeQuery = true)
-//    List<Item> getItemsBySubCategoryId(Integer subCategoryId);
-//
-//    @Query(value = "select * from Item where ca")
-//    List<Item> getItemsByCategoryId(Integer categoryId);
+    @Query(value = "select * from Item where item_Category_Id=:itemCategoryId",nativeQuery = true)
+    List<Item> getItemsByItemCategoryId(Integer itemCategoryId);
+
+    @Query(value=" select * from Item where sub_Category_Id=:subCategoryId ", nativeQuery = true)
+    List<Item> getItemsBySubCategoryId(Integer subCategoryId);
+
+    @Query(value=" select * from Item where category_Id=:categoryId", nativeQuery = true)
+    List<Item> getItemsByCategoryId(Integer categoryId);
 
 }

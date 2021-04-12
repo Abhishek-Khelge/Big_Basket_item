@@ -29,12 +29,15 @@ public class Item {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "itemCategoryId")
     private ItemCategory itemCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="subCategoryId")
     private SubCategory subCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CategoryId")
     private Category category;
 
     public Integer getCategoryId(){
