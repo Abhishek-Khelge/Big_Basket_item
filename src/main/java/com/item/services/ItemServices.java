@@ -76,4 +76,7 @@ public class ItemServices {
         return itemRepository.getItemsBySubCategoryId(subCategoryId);
     }
 
+    public List<Item> getAllItem() {
+        return  itemRepository.findAll();
+    }
 }

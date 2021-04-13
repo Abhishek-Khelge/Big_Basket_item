@@ -48,7 +48,7 @@ public class ItemCategoryServices {
     }
 
     public ItemCategoryDto removeItemCategory(Integer adminId, Integer itemCategoryId) {
-        // verify aadmin Id
+        // verify admin Id
         Optional<ItemCategory> itemCategory=itemCategoryRepository.findById(itemCategoryId);
         ItemCategoryDto itemCategoryDto=new ItemCategoryDto();
         if(itemCategory.isPresent()){
@@ -69,6 +69,10 @@ public class ItemCategoryServices {
     }
 
     public ItemCategory getItemCategory(Integer adminId, Integer itemCategoryId) {
-        return null;
+        return itemCategoryRepository.findById(itemCategoryId).get();
+    }
+
+    public List<ItemCategory> getAllCategory() {
+        return itemCategoryRepository.findAll();
     }
 }

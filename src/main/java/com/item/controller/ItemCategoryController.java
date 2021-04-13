@@ -17,10 +17,10 @@ public class ItemCategoryController {
     ItemCategoryServices itemCategoryServices;
 
     /**
-     * Description : Admin adding item category in db using itemcategoryId
+     * Description : Admin adding item category in db
      * @param adminId : this is for checking authorization
      * @param itemCategory : input itemCategory
-     * @return : status
+     * @return : ItemCategory Dto
      */
     @PostMapping("/itemcategory/{adminId}")
     public ItemCategoryDto addItemCategory(@PathVariable("adminId") Integer adminId,
@@ -33,7 +33,7 @@ public class ItemCategoryController {
      * Description : Updating item category
      * @param adminId : this is for checking authorization
      * @param itemCategory : input itemCategory
-     * @return
+     * @return ItemCategory Dto
      */
     @PutMapping("/itemcategory/{adminId}")
     public ItemCategoryDto updateItemCategory(@PathVariable("adminId") Integer adminId,
@@ -45,7 +45,7 @@ public class ItemCategoryController {
      *  Description : to delete the Itemcategory
      * @param adminId : this is for checking authorization
      * @param itemCategoryId : to point which category to delete
-     * @return : status
+     * @return : ItemCategory DTO
      */
     @DeleteMapping("/itemcategory/{adminId}/{itemCategoryId}")
     public ItemCategoryDto removeItemCategory(@PathVariable("adminId") Integer adminId,
@@ -53,16 +53,33 @@ public class ItemCategoryController {
         return itemCategoryServices.removeItemCategory(adminId,itemCategoryId);
     }
 
-    /**get all items by item category*/
+    /**
+     * Description : get all itemCategories
+     * @return list of itemCategory
+     */
+    @GetMapping("/itemcategory")
+    public List<ItemCategory> getAllItemCategory(){
+        return itemCategoryServices.getAllCategory();
+    }
+
+    /**Description:get all items by item category
+     * @param itemCategoryId
+     * @return list of all items
+     */
     @GetMapping("/itemcategory/items/{itemCategoryId}")
     public List<Item> getItemsByItemCategory(@PathVariable("itemCategoryId") Integer itemCategoryId){
         return itemCategoryServices.getItemsByItemCategory(itemCategoryId);
     }
 
-    //get information for particular itemcategory by admin
+    /**
+     * Description : get information for particular itemcategory by admin
+     * @param adminId
+     * @param itemCategoryId
+     * @return itemCategory
+     */
     @GetMapping("/itemcategory/{adminId}/{itemCategoryId}")
     public ItemCategory getItemCategory(@PathVariable("adminId") Integer adminId,
-                                          @PathVariable("itemCategoryId") Integer itemCategoryId){
+                                        @PathVariable("itemCategoryId") Integer itemCategoryId){
         return itemCategoryServices.getItemCategory(adminId,itemCategoryId);
     }
 
