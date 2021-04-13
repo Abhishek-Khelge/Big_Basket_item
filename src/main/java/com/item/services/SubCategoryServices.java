@@ -70,4 +70,11 @@ public class SubCategoryServices {
     }
 
 
+    public List<SubCategory> getAllCategory() {
+        return subCategoryRepo.findAll();
+    }
+
+    public SubCategory getSubCategory(Integer adminId, Integer itemCategoryId) {
+        return subCategoryRepo.findById(itemCategoryId).get();
+    }
 }

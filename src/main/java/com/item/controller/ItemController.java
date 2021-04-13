@@ -39,4 +39,9 @@ public class ItemController {
         return itemServices.getItemById(itemId);
     }
 
+    @GetMapping("/item")
+    public List<Item> getAllItems(){
+        return itemServices.getAllItem();
+    }
+
 }

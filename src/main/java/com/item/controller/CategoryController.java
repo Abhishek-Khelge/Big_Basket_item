@@ -17,10 +17,11 @@ public class CategoryController {
      * Description :  add category to DB
      * @param adminId this is for checking authorization
      * @param category input category
-     * @return status
+     * @return Category DTO
      */
     @PostMapping("/category/{adminId}")
-    public CategoryDto addCategory(@PathVariable("adminId") Integer adminId, @RequestBody Category category){
+    public CategoryDto addCategory(@PathVariable("adminId") Integer adminId,
+                                   @RequestBody Category category){
         return categoryServices.addCategory(adminId,category);
     }
 
@@ -28,7 +29,7 @@ public class CategoryController {
      * Description : update the category
      * @param adminId this is for checking authorization
      * @param category update category body
-     * @return status
+     * @return Category DTO
      */
     @PutMapping("/category/{adminId}")
     public CategoryDto updateCategory(@PathVariable("adminId") Integer adminId,@RequestBody Category category){
